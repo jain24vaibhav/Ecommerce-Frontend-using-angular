@@ -1,0 +1,73 @@
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center mt-2">
+        <div class="col-lg-3 border rounded shadow">
+                <div class="row p-0 ">
+                    <div class="col-lg-6 p-0 border" style="cursor:pointer; color:grey" [routerLink]="['/login']">
+                           <p class="text-center   m-3" >Login</p> 
+                    </div>
+                    <div class="col-lg-6 p-0 "  style="background-color: rgb(64, 187, 64)"> 
+                            <p class="text-center text-light m-3" >Signup</p>
+                            <hr class="m-0">
+                    </div>
+                </div>
+
+
+                <div class="p-4">
+
+                    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                        <div class="form-group">
+                            <input type="text" formControlName="userFirstName" placeholder="First name" class="form-control">
+                            <small class="text-danger" *ngIf="signupForm.get('userFirstName').touched && signupForm.get('userFirstName').errors?.required">
+                                Name required
+                            </small>
+                            <small class="text-danger" *ngIf="signupForm.get('userFirstName').invalid && signupForm.get('userFirstName').errors?.pattern">
+                                Enter proper name
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="userLastName" placeholder="Last name" class="form-control">
+                            <small class="text-danger" *ngIf="signupForm.get('userLastName').touched && signupForm.get('userLastName').errors?.required">
+                                Name required
+                            </small>
+                            <small class="text-danger" *ngIf="signupForm.get('userLastName').touched && signupForm.get('userLastName').errors?.pattern">
+                                Enter proper name
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="userEmail" placeholder="Email" class="form-control">
+                            <small class="text-danger" *ngIf="signupForm.get('userEmail').touched && signupForm.get('userEmail').errors?.required">
+                                Email required
+                            </small>
+                            <small class="text-danger" *ngIf="signupForm.get('userEmail').touched && signupForm.get('userEmail').errors?.email">
+                                Enter proper email
+                            </small>
+                        </div>
+                         <div class="form-group">
+                            <input type="text" formControlName="userMobile" placeholder="Mobile" class="form-control">
+                            <small class="text-danger" *ngIf="signupForm.get('userMobile').touched && signupForm.get('userMobile').errors?.required">
+                                Mobile required
+                            </small>
+                            <small class="text-danger" *ngIf="signupForm.get('userMobile').invalid && signupForm.get('userMobile').errors?.pattern">
+                                Enter proper mobile
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="userPassword" placeholder="Password" class="form-control">
+                            <small class="text-danger" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').errors?.required">
+                                Password required
+                            </small>
+                            <small class="text-danger" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').errors?.minlength">
+                                Atlease 3 characters
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="signupForm.invalid" class="btn btn-primary float-right mb-3">Login</button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+        </div>
+    </div>
+</div>

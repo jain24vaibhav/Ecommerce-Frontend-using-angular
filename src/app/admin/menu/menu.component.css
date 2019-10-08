@@ -1,0 +1,10 @@
+li{
+    list-style-type: none;
+    text-align: center;
+    background-color: rgb(64, 187, 64);
+    color: white;
+
+}
+ul{
+    padding: 0px;
+}
