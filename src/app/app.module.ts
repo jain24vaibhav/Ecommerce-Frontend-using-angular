@@ -7,10 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule} from  '@angular/forms';
-import { AdminComponent } from './admin/admin.component';
-import { MenuComponent } from './admin/menu/menu.component';
-import { ProductComponent } from './admin/product/product.component';
-import { DepartmentComponent } from './admin/department/department.component'
 
 @NgModule({
   declarations: [
@@ -18,17 +14,13 @@ import { DepartmentComponent } from './admin/department/department.component'
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    AdminComponent,
-    MenuComponent,
-    ProductComponent,
-    DepartmentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

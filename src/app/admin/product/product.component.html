@@ -1,1 +1,115 @@
-<p>product works!</p>
+<div class="container-fluid">
+        <div class="row px-4">
+            <div class="col-lg-2 px-3">
+                <app-menu></app-menu>
+            </div>
+            <div style="padding-right:80px" class="col-lg-10 ">
+                
+                <div class="btn-info  rounded">
+                    <label class="m-2">Products</label>
+                    <button class="float-right btn btn-sm btn-light m-1" (click)="showAddProduct=true ;  CRUDresponse=null" >Add</button>
+                </div>
+    
+                <h6 class="text-center text-danger mt-3">{{CRUDresponse}}</h6>
+    
+                <form *ngIf="showAddProduct" [formGroup]="productForm" (ngSubmit)="addProduct()">
+                    <div class="row p-3 m-4 border">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                    <input type="text" placeholder="Product Name" formControlName="productName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" placeholder="Produt Image" formControlName="productImage" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="number" placeholder="Product Price" formControlName="productPrice" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <input type="number" placeholder="Produt MRP" formControlName="productMRP" class="form-control">
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                    <textarea style="resize: none; height:90px" placeholder="Product Description" formControlName="productDescription" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                    <input type="number" placeholder="Quantity" formControlName="quantityAvailable" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <!-- <input type="text" placeholder="Department" formControlName="departmentId" class="form-control"> -->
+                                    <select class="form-control" formControlName="departmentId" >
+                                        <option *ngFor="let dep of departmentList" value="{{dep.departmentId}}">{{dep.departmentName}}</option>
+                                    </select>
+                            </div>
+                        </div>        
+                        <button class="btn btn-success mx-2 ml-4 text-right">Add</button>
+                        <button class="btn btn-danger mx-2 float-right" (click)="showAddProduct=false; CRUDresponse=null" >Cancel</button>    
+                        
+                    </div> 
+                </form> 
+
+
+                <form *ngIf="showUpadateProduct" [formGroup]="updateProductForm" (ngSubmit)="updateProduct()">
+                        <div class="row p-3 m-4 border">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                        <input type="text" placeholder="Product Name" formControlName="productName" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" placeholder="Produt Image" formControlName="productImage" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                        <input type="number" placeholder="Product Price" formControlName="productPrice" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                        <input type="number" placeholder="Produt MRP" formControlName="productMRP" class="form-control">
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                        <textarea style="resize: none; height:90px" placeholder="Product Description" formControlName="productDescription" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                        <input type="number" placeholder="Quantity" formControlName="quantityAvailable" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                        <!-- <input type="text" placeholder="Department" formControlName="departmentId" class="form-control"> -->
+                                        <select class="form-control" formControlName="departmentId" >
+                                                <option *ngFor="let dep of departmentList" value="{{dep.departmentId}}">{{dep.departmentName}}</option>
+                                            </select>
+                                </div>
+                            </div>        
+                            <button class="btn btn-success mx-2 ml-4 text-right">Update</button>
+                            <button class="btn btn-danger mx-2 float-right" (click)="showUpadateProduct=false; CRUDresponse=null" >Cancel</button>    
+                            
+                        </div> 
+                    </form> 
+    
+                <table class="table ">
+                   
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <td>Quantity</td>
+                            <th>Actions</th>
+                            
+                        </tr>
+                        <tr *ngFor="let pro of productList ; index as i">
+                            <td>{{pro.productId}}</td>
+                            <td>{{pro.productName}}</td>
+                            <td>{{pro.quantityAvailable}}</td>
+                            <td>
+                                    <i class="far fa-edit text-info" (click)="updateShow(pro) ; showUpadateProduct=true; CRUDresponse=null" ></i>
+                                    <i class="far fa-trash-alt ml-4 text-danger" (click)="deleteProduct(pro.productId,i)"></i>
+                            </td>
+                        </tr>
+                    
+                </table>
+    
+                
+    
+            </div>
+        </div>
+    </div>

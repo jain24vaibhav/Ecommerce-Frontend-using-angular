@@ -1,1 +1,64 @@
-<p>department works!</p>
+<div class="container-fluid">
+    <div class="row px-4">
+        <div class="col-lg-2 px-3">
+            <app-menu></app-menu>
+        </div>
+        <div style="padding-right:80px" class="col-lg-10 ">
+            
+            <div class="btn-info  rounded">
+                <label class="m-2">Departments</label>
+                <button class="float-right btn btn-sm btn-light m-1" (click)="showAddDepartment=true ;  CRUDresponse=null" >Add</button>
+            </div>
+
+            <h6 class="text-center text-danger mt-3">{{CRUDresponse}}</h6>
+
+            <form *ngIf="showAddDepartment" [formGroup]="departmentForm" (ngSubmit)="addDepartment()">
+                <div class="row px-4 m-4">
+                        <div class="col-lg-9">
+                            <input type="text" placeholder="Department Name" formControlName="departmentName" class="form-control">
+                        </div>
+                        <div class="col-lg-3 pl-4">
+                            <button class="btn btn-success mx-2 ml-4">Add</button>
+                            <button class="btn btn-danger mx-2" (click)="showAddDepartment=false; CRUDresponse=null" >Cancel</button>
+                        </div>
+                </div> 
+            </form> 
+
+            <form *ngIf="showUpadateDepartment" [formGroup]="updateDepartmentForm" (ngSubmit)="updateDepartment()">
+                <div class="row px-4 m-4">
+
+                        <div class="col-lg-9">
+                            <input type="text" placeholder="Department Name" formControlName="departmentName" class="form-control">
+                           
+                        </div>
+                        <div class="col-lg-3 pl-2">
+                            <button class="btn btn-success mx-2 ">Update</button>
+                            <button class="btn btn-danger mx-2" (click)="showUpadateDepartment=false; CRUDresponse=null" >Cancel</button>
+                        </div>
+                </div> 
+            </form> 
+
+            <table class="table ">
+               
+                    <tr>
+                        <th>Dep Id</th>
+                        <th>Dep Name</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                    <tr *ngFor="let dep of departmentList ; index as i">
+                        <td>{{dep.departmentId}}</td>
+                        <td>{{dep.departmentName}}</td>
+                        <td>
+                                <i class="far fa-edit text-info" (click)="updateShow(dep) ; showUpadateDepartment=true; CRUDresponse=null" ></i>
+                                <i class="far fa-trash-alt ml-4 text-danger" (click)="delete(dep.departmentId,i)"></i>
+                        </td>
+                    </tr>
+                
+            </table>
+
+            
+
+        </div>
+    </div>
+</div>
