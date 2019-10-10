@@ -29,4 +29,16 @@ export class ProductService {
     return this._base.put(this._base.baseUrl + "products", product)
   }
 
+  getProuctsByDepartment(name){
+    return this._base.get(this._base.baseUrl + "products/bydepartment/"+name)
+  }
+
+  getProductById(id){
+    return this._base.get(this._base.baseUrl + "products/"+id)
+  }
+
+  getRelatedProducts(id){
+    return this._base.get(this._base.baseUrl + "products/related/"+id)
+  }
+
 }
