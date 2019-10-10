@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row px-4 py-3">
+        <div class="col-lg-6 px-4">
+            <img class="rounded border" src="../../assets/images/products/{{productDetail.productImage}}" width="100%">
+        </div>
+        <div class="col-lg-6 px-4 pt-2">
+            <span class="h3"><b> {{productDetail.productName}}</b></span>
+            <span class="float-right text-warning mt-2" title="Add to wishlist"><i class="far fa-star fa-lg"></i></span>
+            <span class="float-right text-warning mt-2 " title="Reomve from wishlist"><i class="fas fa-star fa-lg"></i></span>
+            <p class="mt-1 mb-2 " style="color: rgb(136, 130, 130)">Rating : 0 ( 0 <i class="fas fa-user"></i> ) </p>
+
+            <hr class="m-0 p-0"> 
+
+            <h4 class="mt-4" style="color: rgb(156, 35, 35)"><b>{{productDetail.productPrice | currency : 'INR'}} </b></h4>
+            <p class="text-muted">MRP : {{productDetail.productMRP}}</p>
+            <p class="text-justify mt-3 text-muted">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s.
+            </p>
+  
+            <button *ngIf="itemInCart" class="btn btn-success float-right mb-4 mx-2" [routerLink]="['/cart']">
+                Go to cart
+            </button>
+            <button class="btn btn-info float-right mb-4" (click)="AddToCart()">
+                {{cartButtonText}}
+            </button>
+            
+
+            <div class="mt-4 pt-4">
+                <p class="mt-2 mb-1">Share : </p> 
+                <i id="social" class="fab fa-whatsapp fa-2x mr-2"></i>
+                <i id="social" class="fab fa-twitter fa-2x mx-2 "></i>
+                <i id="social" class="fab fa-facebook-f fa-2x ml-2"></i>
+            </div>
+            <hr>
+
+
+
+
+            
+        </div>
+    </div>
+
+    <div class="p-4">
+        <h5 c>Related Products :</h5>
+        <hr>
+        <div class="row">
+            <div class="col-lg-2  p-2" *ngFor="let pro of relatedProducts" [routerLink]="['/detail',pro.productId]">
+                <div id="related">
+                    <img  class="" src="../../assets/images/products/{{pro.productImage}}" width="100%">
+                    <p class="text-center mt-1 mb-0"><b>{{pro.productName}}</b></p>
+                    <p class="text-center">{{pro.productPrice}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

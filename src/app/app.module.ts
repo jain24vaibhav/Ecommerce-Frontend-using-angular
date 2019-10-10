@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule} from  '@angular/forms';
+import { ListComponent } from './list/list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { UserComponent } from './user/user.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +19,11 @@ import { FormsModule, ReactiveFormsModule} from  '@angular/forms';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    ListComponent,
+    ProductDetailComponent,
+    CartComponent,
+    UserComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

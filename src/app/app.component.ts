@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from './Services/department.service';
 import { ProductService } from './Services/product.service';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   searchString : string
   searchProduct : any
 
-  constructor(private _dep : DepartmentService, private _prod:ProductService){}
+  constructor(private _dep : DepartmentService, private _prod:ProductService, private _auth:AuthService){}
 
   ngOnInit(){
       this._dep.getDepartmentList()
@@ -26,6 +27,10 @@ export class AppComponent implements OnInit {
             console.log(err)
           }
         )
+  }
+
+  logout(){
+    localStorage.clear()
   }
 
   search(){

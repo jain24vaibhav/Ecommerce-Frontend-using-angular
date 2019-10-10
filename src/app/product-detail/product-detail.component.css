@@ -1,0 +1,17 @@
+#social{
+    cursor: pointer;
+    color: darkkhaki;
+}
+#social:hover{
+    color :rgb(150, 145, 83);
+}
+
+#related{
+    cursor: pointer;
+
+}
+
+#related:hover{
+    box-shadow: 1px 1px 20px grey;
+    
+}

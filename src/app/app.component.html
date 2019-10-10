@@ -14,7 +14,7 @@
                Shop by Category
               </button>
               <div class="dropdown-menu" >
-                <a *ngFor="let dep of departmentName" class="dropdown-item pl-3" href="#">{{dep.departmentName}}<i class="far fa-hand-point-right"></i></a>
+                <a *ngFor="let dep of departmentName" class="dropdown-item pl-3" [routerLink]="['/list', dep.departmentName]">{{dep.departmentName}}<i class="far fa-hand-point-right"></i></a>
                 
               </div>
             </div>
@@ -23,12 +23,18 @@
           <input type="search" [(ngModel)]="searchString" class="form-control" placeholder="Search" style="width: 500px" (keyup)="search()" >
           <div *ngIf="searchProduct" id="top">
               <ul class="border rounded">
-                <li id="item" *ngFor="let pro of searchProduct"> {{pro.productName}} </li>
+                <li id="item" *ngFor="let pro of searchProduct" [routerLink]="['/detail',pro.productId]" (click)="searchProduct=false" > {{pro.productName}} </li>
               </ul>
           </div>
         </li>
       </ul>
-      <i class="fas fa-user fa-2x" id="icons" [routerLink]="['/login']"></i>
+      <i *ngIf="!_auth.isAuthenticated()" class="fas fa-user fa-2x" id="icons"  [routerLink]="['/login']"></i>
+      <div *ngIf="_auth.isAuthenticated()"> 
+        <i class="fas fa-user fa-2x" id="icons" [routerLink]="['/user']"></i>
+        <i class="fas fa-cart-plus fa-2x" id="icons" [routerLink]="['/cart']"></i>
+        <i class="fas fa-sign-out-alt fa-2x" id="icons" [routerLink]="['/home']" (click)="logout()" ></i>
+      </div>
+      
     </div>
   </nav>
 

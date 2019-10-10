@@ -1,0 +1,26 @@
+<div class="container-fluid mt-4 pt-2">
+    <div class="row justify-content-center">
+        <div class="col-lg-2 px-0">
+            <div class="border rounded">
+                <p class="text-center btn-light p-2 m-2">Filters</p>
+            </div>
+        </div>
+        <div class="col-lg-9 px-4">
+            <div class="row">
+                <div class="col-lg-4 px-4 mb-4" *ngFor="let pro of productList" [routerLink]="['/detail',pro.productId]" >
+                    <div class="  mx-3 mb-3" style="cursor: pointer">
+                        <img class="img img-thumbnail" src="../../assets/images/products/{{pro.productImage}}" width="100%"> 
+                        <div>
+                            <span style="color: rgb(145, 143, 143)">
+                                <b>  {{pro.productName}}</b>
+                            </span>
+                            <span class="float-right" style="color: maroon">
+                                <b>  {{pro.productPrice | currency : 'INR'}}</b> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

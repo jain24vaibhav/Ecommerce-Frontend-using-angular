@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="btn-info p-2 rounded" >
+         Order History   
+    </div>
+    <div class="row justify-content-center">
+            <div class="col-lg-5" *ngFor="let order of orderHistoryList">
+                    <div class="mt-4">
+                      <span class=" btn-info px-4 py-1 rounded">  {{order.orderId}}</span>
+                    </div>
+                    <div class="row border mx-4 mt-1" >
+                            <div class="col-lg-5 p-0">
+                                <img src="../../assets/images/products/{{order.productImage}}" width="100%">
+                            </div>
+                    
+                            <div class="col-lg-5 p-2">
+                                <h5>{{order.productName}}</h5>
+                                <h5>{{order.productPrice | currency : 'INR'}}</h5>
+                                <p><b>Address :</b></p>
+                                <p>
+                                    {{order.name}}
+                                   
+                    
+                                </p>
+                                <p> {{order.houseno}}, {{order.area}}</p>
+                                <p>{{order.city}}, {{order.state}}</p>
+                                <p>{{order.pincode}}</p>
+                            </div>
+                        </div>
+            </div>
+    </div>
+  
+   
+</div>
